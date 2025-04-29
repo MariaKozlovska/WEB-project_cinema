@@ -1,7 +1,30 @@
 const App = () => {
   const [movieData, setMovieData] = React.useState(movies);
   const [searchTerm, setSearchTerm] = React.useState('');
-  
+  const [selectedGenre, setSelectedGenre] = React.useState('');
+  const [genres, setGenres] = React.useState([]);
+
+  React.useEffect(() => {
+    const uniqueGenres = [...new Set(movies.flatMap(movie => 
+      movie.genre.split(', ')
+    ))];
+    setGenres(uniqueGenres);
+  }, []);
+  React.useEffect(() => {
+    const filteredMovies = movies.filter(movie => {
+      // Проверка на соответствие поисковому запросу (если он не пустой)
+      const matchesSearch = searchTerm.trim() === '' || 
+        movie.title.toLowerCase().includes(searchTerm.toLowerCase().trim());
+    // Проверка на соответствие выбранному жанру (если он не пустой)
+      const matchesGenre = selectedGenre === '' || 
+        movie.genre.split(', ').includes(selectedGenre);
+      
+      return matchesSearch && matchesGenre;
+    });
+    
+    setMovieData(filteredMovies);
+  }, [searchTerm, selectedGenre]);
+
   React.useEffect(() => {
     if (searchTerm.trim() === '') {
       setMovieData(movies);
@@ -30,6 +53,7 @@ const App = () => {
           className="search-input"
         />
       </div>
+      
       
       <MovieList movies={movieData} />
     </div>

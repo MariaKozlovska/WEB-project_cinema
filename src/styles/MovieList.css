@@ -4,9 +4,10 @@
 
 .movie-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
   gap: 30px;
   margin-top: 20px;
+  grid-template-columns: repeat(4, 1fr); /* Увеличено с 3 до 4 колонок */
+  gap: 20px;
 }
 
 .movie-grid-item {
@@ -26,17 +27,22 @@
   color: #666;
 }
 
-/* Responsive styles */
+@media screen and (max-width: 1200px) {
+  .movie-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media screen and (max-width: 992px) {
   .movie-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    gap: 15px;
   }
 }
 
 @media screen and (max-width: 576px) {
   .movie-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 15px;
   }
 }

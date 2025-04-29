@@ -21,14 +21,14 @@ const MovieCard = ({ movie }) => {
     return (
       <div className="movie-card">
         <div className="movie-poster">
-          <img src={movie.posterUrl} alt={`Постер фільму "${movie.title}"`} />
+          <img src={movie.posterUrl} alt={`Movie poster "${movie.title}"`} />
         </div>
         <div className="movie-info">
           <h3 className="movie-title">{movie.title}</h3>
           <div className="movie-genre">{movie.genre}</div>
           <p className="movie-description">{movie.description}</p>
           <div className="movie-showtimes">
-            <h4>Сеанси:</h4>
+            <h4>Sessions:</h4>
             <div className="showtimes-container">
               {formatShowTimes(movie.showTimes)}
             </div>
