@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 body {
-  background-color: #f7f7f7; /* Светло-серый фон */
+  background-color: #B0C4DE;
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .app-container {
@@ -34,9 +35,9 @@ h1 {
 }
 
 .search-input:focus {
-  border-color: #4a90e2;
+  border-color: #484848;
   outline: none;
-  box-shadow: 0 2px 8px rgba(74, 144, 226, 0.2);
+  box-shadow: 0 2px 10px rgba(74, 144, 226, 0.2);
 }
 
 .search-input::placeholder {

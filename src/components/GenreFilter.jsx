@@ -1,13 +1,13 @@
 const GenreFilter = ({ genres, selectedGenre, onGenreChange }) => {
     return (
       <div className="genre-filter">
-        <h3>Фільтр за жанром</h3>
+        <h3>Filter by genre</h3>
         <div className="genre-buttons">
           <button 
             className={selectedGenre === '' ? 'active' : ''} 
             onClick={() => onGenreChange('')}
           >
-            Усі жанри
+            All genres
           </button>
           {genres.map((genre) => (
             <button

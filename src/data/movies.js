@@ -24,7 +24,7 @@ const movies = [
     },
     {
       id: 3,
-      title: "dark knight",
+      title: "Dark knight",
       genre: "Action, Drama",
       description: "Batman, Lieutenant Gordon and District Attorney Harvey Dent face a dangerous new criminal known as the Joker.",
       posterUrl: "img/the-dark-night.jpg",

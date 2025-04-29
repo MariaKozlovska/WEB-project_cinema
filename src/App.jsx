@@ -12,10 +12,8 @@ const App = () => {
   }, []);
   React.useEffect(() => {
     const filteredMovies = movies.filter(movie => {
-      // Проверка на соответствие поисковому запросу (если он не пустой)
       const matchesSearch = searchTerm.trim() === '' || 
         movie.title.toLowerCase().includes(searchTerm.toLowerCase().trim());
-    // Проверка на соответствие выбранному жанру (если он не пустой)
       const matchesGenre = selectedGenre === '' || 
         movie.genre.split(', ').includes(selectedGenre);
       

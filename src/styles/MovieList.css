@@ -6,7 +6,7 @@
   display: grid;
   gap: 30px;
   margin-top: 20px;
-  grid-template-columns: repeat(4, 1fr); /* Увеличено с 3 до 4 колонок */
+  grid-template-columns: repeat(4, 1fr); 
   gap: 20px;
 }
 
