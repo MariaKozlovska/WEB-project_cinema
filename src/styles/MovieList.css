@@ -1,4 +1,42 @@
-.movie-list {
-    width: 100%;
-    padding: 20px 0;
+.movie-list-container {
+  width: 100%;
+}
+
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.movie-grid-item {
+  height: 100%;
+}
+
+.no-movies {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 40px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+}
+
+.no-movies p {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 992px) {
+  .movie-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
+}
+
+@media screen and (max-width: 576px) {
+  .movie-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
