@@ -8,6 +8,43 @@
   font-family: "Poppins", sans-serif;
 }
 
+h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 300px;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f8f8f8;
+  color: #000; /* Black text when typing */
+  font-family: "Poppins", sans-serif;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s, border-color 0.3s;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 2px 8px rgba(74, 144, 226, 0.2);
+}
+
+.search-input::placeholder {
+  color: #999;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -57,8 +94,54 @@
 }
 
 body {
-  background-color: #f7f7f7;
+  background-color: #e6e9f0; /* Match the background color from the image */
   margin: 0;
   padding: 0;
   font-family: "Poppins", sans-serif;
+}
+
+.centered-hall {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.hall {
+  display: grid;
+  grid-template-columns: repeat(8, 40px);
+  gap: 10px;
+  justify-content: center;
+}
+
+.seat {
+  width: 40px;
+  height: 40px;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.seat:hover {
+  background-color: #d0d0d0;
+}
+
+.seat.selected {
+  background-color: #2196F3;
+  color: white;
+}
+
+.seat.booked {
+  background-color: #888;
+  color: white;
+  cursor: not-allowed;
+}
+
+.seat-choice {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.1rem;
 }
