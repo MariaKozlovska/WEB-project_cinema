@@ -1,31 +1,34 @@
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const MovieCard = ({ id, title, description, genre, posterUrl, showTimes }) => {
-  // Форматування першого сеансу для відображення (можна змінити на потреби)
   const formatDateTime = (showTimes) => {
-    if (!showTimes || showTimes.length === 0) return "Немає сеансів";
-    
+    if (!showTimes || showTimes.length === 0) return "No sessions";
+
     const firstShow = showTimes[0];
     const date = new Date(firstShow.date);
-    
-    // Форматування дати у стилі "01 травня 2025"
-    const formattedDate = date.toLocaleDateString('eng', {
+
+    const formattedDate = date.toLocaleDateString('en', {
       day: '2-digit',
       month: 'long',
-      year: 'numeric'
+      year: 'numeric',
     });
-    
+
     return `${formattedDate}, ${firstShow.time}`;
+  };
+
+  const handleClick = () => {
+    toast.info(`Navigating to booking for ${title}`);
   };
 
   return (
     <div className="movie-card">
       <div className="content">
-        <img 
-          src={`/${posterUrl}`} 
-          alt={title} 
+        <img
+          src={`/${posterUrl}`}
+          alt={title}
           onError={(e) => {
-            console.error(`Image upload error: ${posterUrl}`);
+            console.error(`Image load error: ${posterUrl}`);
             e.target.src = "/img/default-poster.jpg";
           }}
         />
@@ -35,7 +38,7 @@ const MovieCard = ({ id, title, description, genre, posterUrl, showTimes }) => {
         <p><strong>Session:</strong> {formatDateTime(showTimes)}</p>
       </div>
       <div className="bron-center">
-        <Link to={`/booking/${id}`}>
+        <Link to={`/booking/${id}`} onClick={handleClick}>
           <button className="bron">Rezerve</button>
         </Link>
       </div>
