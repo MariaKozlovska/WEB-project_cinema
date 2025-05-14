@@ -1,44 +1,43 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import '../styles/MovieCard.css';
+import { Link } from "react-router-dom";
 
-const MovieCard = ({ movie }) => {
-  const formatShowTimes = (showTimes) => {
-    return showTimes.map((showTime, index) => {
-      const date = new Date(showTime.date);
-      const formattedDate = date.toLocaleDateString('uk-UA', {
-        day: 'numeric',
-        month: 'long'
-      });
-      return (
-        <div key={index} className="show-time">
-          <span className="date">{formattedDate}</span>
-          <span className="time">{showTime.time}</span>
-        </div>
-      );
+const MovieCard = ({ id, title, description, genre, posterUrl, showTimes }) => {
+  // Форматування першого сеансу для відображення (можна змінити на потреби)
+  const formatDateTime = (showTimes) => {
+    if (!showTimes || showTimes.length === 0) return "Немає сеансів";
+    
+    const firstShow = showTimes[0];
+    const date = new Date(firstShow.date);
+    
+    // Форматування дати у стилі "01 травня 2025"
+    const formattedDate = date.toLocaleDateString('eng', {
+      day: '2-digit',
+      month: 'long',
+      year: 'numeric'
     });
+    
+    return `${formattedDate}, ${firstShow.time}`;
   };
 
   return (
     <div className="movie-card">
-      <div className="movie-poster">
-        <img src={movie.posterUrl} alt={`Movie poster "${movie.title}"`} />
+      <div className="content">
+        <img 
+          src={`/${posterUrl}`} 
+          alt={title} 
+          onError={(e) => {
+            console.error(`Image upload error: ${posterUrl}`);
+            e.target.src = "/img/default-poster.jpg";
+          }}
+        />
+        <h3>{title}</h3>
+        <p>{description}</p>
+        <p><strong>Genre:</strong> {genre}</p>
+        <p><strong>Session:</strong> {formatDateTime(showTimes)}</p>
       </div>
-      <div className="movie-info">
-        <h3 className="movie-title">{movie.title}</h3>
-        <div className="movie-genre">{movie.genre}</div>
-        <p className="movie-description">{movie.description}</p>
-        <div className="movie-showtimes">
-          <h4>Sessions:</h4>
-          <div className="showtimes-container">
-            {formatShowTimes(movie.showTimes)}
-          </div>
-        </div>
-        <div className="booking-button-container">
-          <Link to={`/booking/${movie.id}`} className="booking-button">
-            Book Now
-          </Link>
-        </div>
+      <div className="bron-center">
+        <Link to={`/booking/${id}`}>
+          <button className="bron">Rezerve</button>
+        </Link>
       </div>
     </div>
   );

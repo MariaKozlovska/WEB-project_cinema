@@ -1,15 +1,13 @@
-const STORAGE_KEY = "bookings";
-
-export const BookingService = {
-  getBookings(movieId) {
-    const data = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
-    return data[movieId] || [];
-  },
-
-  saveBooking(movieId, newBooking) {
-    const data = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
-    if (!data[movieId]) data[movieId] = [];
-    data[movieId].push(...newBooking);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+export class BookingService {
+  static getBookings(movieId) {
+    const bookingsJson = localStorage.getItem(`bookings_${movieId}`);
+    return bookingsJson ? JSON.parse(bookingsJson) : [];
   }
-};
+
+  static saveBooking(movieId, seats) {
+    const currentBookings = this.getBookings(movieId);
+    const newBookings = [...currentBookings, ...seats];
+    localStorage.setItem(`bookings_${movieId}`, JSON.stringify(newBookings));
+    return newBookings;
+  }
+}

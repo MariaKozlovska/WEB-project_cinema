@@ -1,15 +1,24 @@
-import { useParams } from "react-router-dom";
-import CinemaHall from "../components/CinemaHall";
-import { movies } from "../data/movies";
+import MovieList from "../components/MovieList";
+import { movies as allMovies } from "../data/movies";
+import { useState } from "react";
 
-export default function Booking() {
-  const { id } = useParams();
-  const movie = movies.find((m) => m.id == id);
+export default function Home() {
+  const [query, setQuery] = useState("");
+
+  const filteredMovies = allMovies.filter((movie) =>
+    movie.title.toLowerCase().includes(query.toLowerCase())
+  );
 
   return (
     <div>
-      <h2>To reserve a place: {movie.title}</h2>
-      <CinemaHall />
+      <h1>Films</h1>
+      <input
+        type="text"
+        placeholder="Пошук фільму..."
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+      />
+      <MovieList movies={filteredMovies} />
     </div>
   );
 }
