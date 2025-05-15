@@ -29,7 +29,7 @@ h1 {
   border: 1px solid #ddd;
   border-radius: 5px;
   background-color: #f8f8f8;
-  color: #000; /* Black text when typing */
+  color: #000;
   font-family: "Poppins", sans-serif;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   transition: box-shadow 0.3s, border-color 0.3s;
@@ -94,7 +94,7 @@ h1 {
 }
 
 body {
-  background-color: #e6e9f0; /* Match the background color from the image */
+  background-color: #e6e9f0;
   margin: 0;
   padding: 0;
   font-family: "Poppins", sans-serif;

@@ -1,26 +1,23 @@
-import React, { useState } from 'react';
-import MovieList from '../components/MovieList';
-import { movies } from '../data/movies';
+import MovieList from "../components/MovieList";
+import { movies as allMovies } from "../data/movies";
+import { useState } from "react";
 
 export default function Home() {
-  const [searchTerm, setSearchTerm] = useState('');
-  
-  const filteredMovies = movies.filter(movie => 
-    movie.title.toLowerCase().includes(searchTerm.toLowerCase())
+  const [query, setQuery] = useState("");
+
+  const filteredMovies = allMovies.filter((movie) =>
+    movie.title.toLowerCase().includes(query.toLowerCase())
   );
 
   return (
-    <div className="app-container">
-      <h1>Catalog of films</h1>
-      <div className="search-container">
-        <input
-          type="text"
-          placeholder="Search for movies by title..."
-          className="search-input"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-      </div>
+    <div>
+      <h1>Films</h1>
+      <input
+        type="text"
+        placeholder="Search movies by title..."
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+      />
       <MovieList movies={filteredMovies} />
     </div>
   );

@@ -9,33 +9,33 @@ export default function BookingForm({ selectedSeats, onConfirm }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!name || !phone || !email) {
-      toast.error("Усі поля обов'язкові!");
+      toast.error("All fields are required!");
       return;
     }
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      toast.error("Некоректний email.");
+      toast.error("Incorrect email.");
       return;
     }
 
     onConfirm({ name, phone, email });
-    toast.success("Бронювання успішно збережено!");
+    toast.success("Reservation successfully saved!");
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <h3>Підтвердження бронювання</h3>
-      <p>Місця: {selectedSeats.join(", ")}</p>
+      <h3>Confirmation of booking</h3>
+      <p>Places: {selectedSeats.join(", ")}</p>
       <input
         type="text"
-        placeholder="Ім'я"
+        placeholder="Enter your name"
         value={name}
         onChange={(e) => setName(e.target.value)}
         required
       />
       <input
         type="tel"
-        placeholder="Телефон"
+        placeholder="Enter your phone number"
         value={phone}
         onChange={(e) => setPhone(e.target.value)}
         required
@@ -47,7 +47,7 @@ export default function BookingForm({ selectedSeats, onConfirm }) {
         onChange={(e) => setEmail(e.target.value)}
         required
       />
-      <div className="bron-ctr"><button type="submit" className="bron">Підтвердити</button></div>
+      <div className="bron-ctr"><button type="submit" className="bron">Confirm</button></div>
     </form>
   );
 }

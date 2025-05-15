@@ -52,9 +52,9 @@ export default function CinemaHall() {
           })}
         </div>
       </div>
-      <p className="seat-choice">Вибрані місця: {selectedSeats.join(", ")}</p>
+      <p className="seat-choice">Selected places: {selectedSeats.join(", ")}</p>
       {!showForm && selectedSeats.length > 0 && (
-        <div className="bron-ctr"><button onClick={() => setShowForm(true)} className="bron">Забронювати</button></div>
+        <div className="bron-ctr"><button onClick={() => setShowForm(true)} className="bron">Reserve</button></div>
       )}
       {showForm && (
         <BookingForm selectedSeats={selectedSeats} onConfirm={handleConfirm} />
