@@ -11,7 +11,7 @@ export default function Home() {
 
   return (
     <div>
-      <h1>Films</h1>
+      <h1>Catalog of films</h1>
       <input
         type="text"
         placeholder="Search movies by title..."

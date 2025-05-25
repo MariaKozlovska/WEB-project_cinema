@@ -39,7 +39,7 @@ const MovieCard = ({ id, title, description, genre, posterUrl, showTimes }) => {
       </div>
       <div className="bron-center">
         <Link to={`/booking/${id}`} onClick={handleClick}>
-          <button className="bron">Rezerve</button>
+          <button className="bron">Reserve</button>
         </Link>
       </div>
     </div>
